@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Visor de PDF Medicuc</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+      }
+      iframe {
+        width: 90%;
+        height: 90vh;
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔍 Visor de Reportes PDF</h1>
+
+    <input type="text" id="nombrePDF" placeholder="Ej: archivo.pdf" />
+    <button onclick="cargarPDF()">Ver PDF</button>
+
+    <br /><br />
+
+    <iframe id="visor" src=""></iframe>
+
+    <script>
+      const baseURL = "https://99ba203c20e4.ngrok-free.app/Reportes/pdf/";
+
+      function cargarPDF() {
+        const archivo = document.getElementById("nombrePDF").value.trim();
+        if (!archivo) {
+          alert("Por favor ingresa el nombre del archivo PDF.");
+          return;
+        }
+        const url = baseURL + archivo;
+        document.getElementById("visor").src = url;
+      }
+    </script>
+  </body>
+</html>
